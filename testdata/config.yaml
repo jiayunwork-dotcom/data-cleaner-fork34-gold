@@ -1,0 +1,159 @@
+name: data-cleaner-demo
+version: "1.0"
+sources:
+    - name: main_data
+      type: csv
+      path: testdata/sample.csv
+      sheet: ""
+      database: null
+      api: null
+    - name: supplementary
+      type: json
+      path: testdata/supplementary.json
+      sheet: ""
+      database: null
+      api: null
+quality:
+    weights:
+        accuracy: 0.2
+        completeness: 0.2
+        consistency: 0.15
+        timeliness: 0.15
+        uniqueness: 0.15
+        validity: 0.15
+    timeliness_threshold: null
+    consistency_rules:
+        - type: compare
+          field_a: start_date
+          field_b: end_date
+          expression: <=
+    validity_rules:
+        - field: email
+          pattern: ^[\w.]+@[\w.]+\.[\w]+$
+          check_fn: ""
+    primary_key:
+        - id
+    unique_keys: []
+    range_checks:
+        - field: age
+          min: 0
+          max: 150
+        - field: salary
+          min: 0
+          max: 1e+06
+    referential_checks: []
+rules:
+    builtin:
+        - id: not_null_id
+          type: not_null
+          field: id
+          critical: true
+          params: {}
+          message: ""
+        - id: age_range
+          type: range
+          field: age
+          critical: true
+          params:
+            max: 150
+            min: 0
+          message: ""
+        - id: salary_range
+          type: range
+          field: salary
+          critical: true
+          params:
+            max: 1000000
+            min: 0
+          message: ""
+        - id: email_format
+          type: regex
+          field: email
+          critical: false
+          params:
+            pattern: ^[\\w.]+@[\\w.]+\\.[\\w]+$
+          message: ""
+        - id: rec_not_null_name_1
+          type: not_null
+          field: name
+          critical: false
+          params: {}
+          message: 列 name 空值率为 0% (共 20 行)
+        - id: rec_length_name_2
+          type: length
+          field: name
+          critical: false
+          params:
+            max: 7
+            min: 3
+          message: 列 name 字符串长度范围 [3, 7]，平均 4.5
+    cross_field: []
+    cross_table: []
+    dsl:
+        - id: age_positive
+          expression: age >= 0 and age <= 150
+          critical: true
+pipeline:
+    steps:
+        - name: assess
+          type: assess
+          depends_on: []
+          params: {}
+          condition: null
+        - name: light_clean
+          type: clean
+          depends_on:
+            - assess
+          params:
+            format_rules:
+                - column: phone
+                  strategy: phone_standardize
+            missing_strategy: median
+            outlier_strategy: winsorize
+          condition:
+            field: dqi
+            op: '>'
+            value: 80
+        - name: deep_clean
+          type: clean
+          depends_on:
+            - assess
+          params:
+            format_rules:
+                - column: phone
+                  strategy: phone_standardize
+            missing_strategy: knn
+            outlier_strategy: to_null
+          condition:
+            field: dqi
+            op: <=
+            value: 80
+        - name: validate
+          type: assess
+          depends_on:
+            - light_clean
+            - deep_clean
+          params: {}
+          condition: null
+        - name: output
+          type: output
+          depends_on:
+            - validate
+          params: {}
+          condition: null
+    max_workers: 4
+    error_policy: continue
+    retry_count: 1
+output:
+    directory: ./output
+    format: csv
+    reports: true
+    audit_log: audit.jsonl
+    html: true
+cache:
+    directory: .data-cleaner-cache/
+    enabled: true
+lineage:
+    enabled: false
+    history_count: 0
+templates: []

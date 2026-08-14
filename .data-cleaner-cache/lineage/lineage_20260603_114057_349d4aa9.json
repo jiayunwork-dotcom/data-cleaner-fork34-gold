@@ -1,0 +1,713 @@
+{
+  "id": "349d4aa9-4917-3cb4-c573-65c7452781d6",
+  "timestamp": "2026-06-03T11:40:57.26151+08:00",
+  "nodes": [
+    {
+      "id": "0804c949-1af5-753e-32cc-a014d94edd2b",
+      "name": "main_data",
+      "type": "source",
+      "created_at": "2026-06-03T11:40:57.261592+08:00",
+      "row_count": 15,
+      "column_count": 8,
+      "fingerprint": "8682f5c4180a29e26db990b29975c87a6ef431ae967170fc749884d180d16630",
+      "columns": [
+        "id",
+        "name",
+        "age",
+        "email",
+        "salary",
+        "start_date",
+        "end_date",
+        "phone"
+      ]
+    },
+    {
+      "id": "610333da-4b1d-1122-4c1a-4806d84a43d2",
+      "name": "supplementary",
+      "type": "source",
+      "created_at": "2026-06-03T11:40:57.26165+08:00",
+      "row_count": 5,
+      "column_count": 6,
+      "fingerprint": "7c6cd595ce098bb2a0d065f2fbcf40412c832599b46f4d5d020d4c8702d3d4e8",
+      "columns": [
+        "salary",
+        "department",
+        "id",
+        "name",
+        "age",
+        "email"
+      ]
+    },
+    {
+      "id": "55345ba3-9ca9-5c97-98b5-f9c6bfebeaa8",
+      "name": "merged",
+      "type": "transform",
+      "created_at": "2026-06-03T11:40:57.261665+08:00",
+      "row_count": 20,
+      "column_count": 9,
+      "fingerprint": "7d338c353b1325486993c6b189b8732767c3b6da9ee066a4d433516b5518e895",
+      "columns": [
+        "id",
+        "name",
+        "age",
+        "email",
+        "salary",
+        "start_date",
+        "end_date",
+        "phone",
+        "department"
+      ]
+    },
+    {
+      "id": "c962b49c-6b3f-5ab7-d209-50024cab5c9d",
+      "name": "assess",
+      "type": "transform",
+      "created_at": "2026-06-03T11:40:57.261981+08:00",
+      "row_count": 20,
+      "column_count": 9,
+      "fingerprint": "226aa50d7dd345bd82e31cc1310dcf963cc93fc384782a561752dc8d8829ff8d",
+      "columns": [
+        "age",
+        "department",
+        "name",
+        "phone",
+        "end_date",
+        "id",
+        "email",
+        "salary",
+        "start_date"
+      ]
+    },
+    {
+      "id": "bed35c62-8b55-e3ae-cfe3-3fdcc69771b0",
+      "name": "light_clean",
+      "type": "transform",
+      "created_at": "2026-06-03T11:40:57.262281+08:00",
+      "row_count": 20,
+      "column_count": 9,
+      "fingerprint": "b16ce9024516f09ead0867489aa910e68655789bfcfb448108cdea749a95c861",
+      "columns": [
+        "department",
+        "start_date",
+        "end_date",
+        "age",
+        "email",
+        "name",
+        "phone",
+        "id",
+        "salary"
+      ]
+    },
+    {
+      "id": "8dd25a19-b9a6-0183-20ec-29d49e83a0e6",
+      "name": "validate",
+      "type": "transform",
+      "created_at": "2026-06-03T11:40:57.262463+08:00",
+      "row_count": 20,
+      "column_count": 9,
+      "fingerprint": "3874f3ee8902972ef03c9f42839188185eb1747ffa415adcdfe491839ef9de14",
+      "columns": [
+        "department",
+        "end_date",
+        "id",
+        "name",
+        "salary",
+        "age",
+        "start_date",
+        "email",
+        "phone"
+      ]
+    },
+    {
+      "id": "db9ec554-ef90-7b23-f389-3387bebd70f5",
+      "name": "output",
+      "type": "output",
+      "created_at": "2026-06-03T11:40:57.263154+08:00",
+      "row_count": 20,
+      "column_count": 9,
+      "fingerprint": "3874f3ee8902972ef03c9f42839188185eb1747ffa415adcdfe491839ef9de14",
+      "columns": [
+        "department",
+        "end_date",
+        "id",
+        "name",
+        "salary",
+        "age",
+        "start_date",
+        "email",
+        "phone"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "2a5c07ac-25cd-ccb6-6a99-f85b19e1849d",
+      "source_node_id": "0804c949-1af5-753e-32cc-a014d94edd2b",
+      "target_node_id": "55345ba3-9ca9-5c97-98b5-f9c6bfebeaa8",
+      "transform_type": "merge",
+      "transform_name": "merge",
+      "affected_rows": 20,
+      "affected_columns": [
+        "id",
+        "name",
+        "age",
+        "email",
+        "salary",
+        "start_date",
+        "end_date",
+        "phone",
+        "department"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id",
+            "id"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name",
+            "name"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age",
+            "age"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email",
+            "email"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary",
+            "salary"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        }
+      ]
+    },
+    {
+      "id": "b980cc9d-db00-58a6-ef2c-a1c869317d78",
+      "source_node_id": "610333da-4b1d-1122-4c1a-4806d84a43d2",
+      "target_node_id": "55345ba3-9ca9-5c97-98b5-f9c6bfebeaa8",
+      "transform_type": "merge",
+      "transform_name": "merge",
+      "affected_rows": 20,
+      "affected_columns": [
+        "id",
+        "name",
+        "age",
+        "email",
+        "salary",
+        "start_date",
+        "end_date",
+        "phone",
+        "department"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id",
+            "id"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name",
+            "name"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age",
+            "age"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email",
+            "email"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary",
+            "salary"
+          ],
+          "contribution_type": "union",
+          "transform": "merge"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        },
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "merge"
+        }
+      ]
+    },
+    {
+      "id": "29538eab-4106-23ec-3183-34a5cb78c378",
+      "source_node_id": "55345ba3-9ca9-5c97-98b5-f9c6bfebeaa8",
+      "target_node_id": "c962b49c-6b3f-5ab7-d209-50024cab5c9d",
+      "transform_type": "assess",
+      "transform_name": "assess",
+      "affected_rows": 20,
+      "affected_columns": [
+        "age",
+        "department",
+        "name",
+        "phone",
+        "end_date",
+        "id",
+        "email",
+        "salary",
+        "start_date"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "assess"
+        }
+      ]
+    },
+    {
+      "id": "9a2bf6cf-72aa-3610-408a-fd5ceeeabb40",
+      "source_node_id": "c962b49c-6b3f-5ab7-d209-50024cab5c9d",
+      "target_node_id": "bed35c62-8b55-e3ae-cfe3-3fdcc69771b0",
+      "transform_type": "clean",
+      "transform_name": "light_clean",
+      "affected_rows": 20,
+      "affected_columns": [
+        "department",
+        "start_date",
+        "end_date",
+        "age",
+        "email",
+        "name",
+        "phone",
+        "id",
+        "salary"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary"
+          ],
+          "contribution_type": "copy",
+          "transform": "light_clean"
+        }
+      ]
+    },
+    {
+      "id": "ebe2e2a5-2612-492b-9af8-77f2cb5b1402",
+      "source_node_id": "bed35c62-8b55-e3ae-cfe3-3fdcc69771b0",
+      "target_node_id": "8dd25a19-b9a6-0183-20ec-29d49e83a0e6",
+      "transform_type": "assess",
+      "transform_name": "validate",
+      "affected_rows": 20,
+      "affected_columns": [
+        "department",
+        "end_date",
+        "id",
+        "name",
+        "salary",
+        "age",
+        "start_date",
+        "email",
+        "phone"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "validate"
+        }
+      ]
+    },
+    {
+      "id": "ad4bbe4f-7682-31fd-139d-831922a3119b",
+      "source_node_id": "8dd25a19-b9a6-0183-20ec-29d49e83a0e6",
+      "target_node_id": "db9ec554-ef90-7b23-f389-3387bebd70f5",
+      "transform_type": "output",
+      "transform_name": "output",
+      "affected_rows": 20,
+      "affected_columns": [
+        "department",
+        "end_date",
+        "id",
+        "name",
+        "salary",
+        "age",
+        "start_date",
+        "email",
+        "phone"
+      ],
+      "column_lineage": [
+        {
+          "target_column": "department",
+          "source_columns": [
+            "department"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "end_date",
+          "source_columns": [
+            "end_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "id",
+          "source_columns": [
+            "id"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "name",
+          "source_columns": [
+            "name"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "salary",
+          "source_columns": [
+            "salary"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "age",
+          "source_columns": [
+            "age"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "start_date",
+          "source_columns": [
+            "start_date"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "email",
+          "source_columns": [
+            "email"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        },
+        {
+          "target_column": "phone",
+          "source_columns": [
+            "phone"
+          ],
+          "contribution_type": "copy",
+          "transform": "output"
+        }
+      ]
+    }
+  ],
+  "is_incremental": false
+}

@@ -1,0 +1,234 @@
+{
+  "dataset_name": "validate",
+  "timestamp": "2026-06-03T11:40:57+08:00",
+  "total_rows": 20,
+  "total_columns": 9,
+  "dimensions": [
+    {
+      "dimension": "completeness",
+      "score": 87.77777777777777,
+      "details": "Overall: 87.8% non-null; department: 25.0%; end_date: 100.0%; id: 100.0%; name: 100.0%; salary: 100.0%; age: 100.0%; start_date: 100.0%; email: 95.0%; phone: 70.0%"
+    },
+    {
+      "dimension": "consistency",
+      "score": 95,
+      "details": "95.0% consistent (19/20)"
+    },
+    {
+      "dimension": "accuracy",
+      "score": 100,
+      "details": "100.0% accurate (40/40)"
+    },
+    {
+      "dimension": "uniqueness",
+      "score": 100,
+      "details": "100.0% unique (0 duplicates)"
+    },
+    {
+      "dimension": "timeliness",
+      "score": 100,
+      "details": "no timeliness threshold configured"
+    },
+    {
+      "dimension": "validity",
+      "score": 84.21052631578947,
+      "details": "84.2% valid (16/19)"
+    }
+  ],
+  "dqi": 94.44,
+  "row_quality": [
+    {
+      "row_index": 0,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 1,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 2,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department",
+        "consistency:start_date_end_date:\u003c="
+      ]
+    },
+    {
+      "row_index": 3,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department",
+        "completeness:null:email"
+      ]
+    },
+    {
+      "row_index": 4,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 5,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department",
+        "validity:pattern:email:frank@example"
+      ]
+    },
+    {
+      "row_index": 6,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 7,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 8,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 9,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 10,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 11,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department",
+        "completeness:null:phone"
+      ]
+    },
+    {
+      "row_index": 12,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 13,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 14,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:department"
+      ]
+    },
+    {
+      "row_index": 15,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:phone"
+      ]
+    },
+    {
+      "row_index": 16,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:phone",
+        "validity:pattern:email:peter@example"
+      ]
+    },
+    {
+      "row_index": 17,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:phone"
+      ]
+    },
+    {
+      "row_index": 18,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:phone",
+        "validity:pattern:email:"
+      ]
+    },
+    {
+      "row_index": 19,
+      "status": "WARN",
+      "issues": [
+        "completeness:null:phone"
+      ]
+    }
+  ],
+  "column_scores": [
+    {
+      "column_name": "department",
+      "completeness": 25,
+      "validity": 100
+    },
+    {
+      "column_name": "end_date",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "id",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "name",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "salary",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "age",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "start_date",
+      "completeness": 100,
+      "validity": 100
+    },
+    {
+      "column_name": "email",
+      "completeness": 95,
+      "validity": 100
+    },
+    {
+      "column_name": "phone",
+      "completeness": 70,
+      "validity": 100
+    }
+  ]
+}

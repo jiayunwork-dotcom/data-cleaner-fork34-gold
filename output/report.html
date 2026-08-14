@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Quality Report - merged</title>
+<style>
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; margin: 20px; background: #f5f5f5; }
+h1 { color: #333; border-bottom: 2px solid #4a9eff; padding-bottom: 10px; }
+h2 { color: #555; margin-top: 30px; }
+table { border-collapse: collapse; width: 100%; margin: 10px 0; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+th, td { border: 1px solid #ddd; padding: 10px 14px; text-align: left; }
+th { background: #4a9eff; color: white; }
+tr:nth-child(even) { background: #f9f9f9; }
+.improved { color: #2e7d32; font-weight: bold; }
+.declined { color: #c62828; font-weight: bold; }
+.unchanged { color: #666; }
+.radar-container { text-align: center; margin: 20px 0; }
+canvas { border: 1px solid #ddd; background: white; }
+</style>
+</head>
+<body>
+<h1>Data Quality Report: merged</h1>
+
+<h2>Quality Score Comparison</h2>
+<table>
+<tr><th>Dimension</th><th>Before</th><th>After</th><th>Change</th></tr>
+
+<tr>
+<td>completeness</td>
+<td>80.6</td>
+<td>87.8</td>
+<td class="improved">&#43;7.2</td>
+</tr>
+
+<tr>
+<td>consistency</td>
+<td>92.3</td>
+<td>95.0</td>
+<td class="improved">&#43;2.7</td>
+</tr>
+
+<tr>
+<td>accuracy</td>
+<td>89.7</td>
+<td>100.0</td>
+<td class="improved">&#43;10.3</td>
+</tr>
+
+<tr>
+<td>uniqueness</td>
+<td>100.0</td>
+<td>100.0</td>
+<td class="unchanged">&#43;0.0</td>
+</tr>
+
+<tr>
+<td>timeliness</td>
+<td>100.0</td>
+<td>100.0</td>
+<td class="unchanged">&#43;0.0</td>
+</tr>
+
+<tr>
+<td>validity</td>
+<td>84.2</td>
+<td>84.2</td>
+<td class="unchanged">&#43;0.0</td>
+</tr>
+
+</table>
+
+<h2>DQI Score</h2>
+<table>
+<tr><th>Metric</th><th>Value</th></tr>
+<tr><td>Before DQI</td><td>90.5</td></tr>
+<tr><td>After DQI</td><td>94.4</td></tr>
+<tr><td>Change</td><td class="improved">&#43;3.9</td></tr>
+</table>
+
+<h2>Radar Chart</h2>
+<div class="radar-container">
+<canvas id="radarChart" width="500" height="500"></canvas>
+</div>
+
+<script>
+var dims = ["completeness","consistency","accuracy","uniqueness","timeliness","validity"];
+var before = [ 80.55555555555556 , 92.3076923076923 , 89.74358974358975 , 100 , 100 , 84.21052631578947 ];
+var after = [ 87.77777777777777 , 95 , 100 , 100 , 100 , 84.21052631578947 ];
+
+var canvas = document.getElementById('radarChart');
+var ctx = canvas.getContext('2d');
+var cx = 250, cy = 250, r = 180;
+
+ctx.clearRect(0, 0, 500, 500);
+
+for (var i = 0; i <= 4; i++) {
+  var level = r * (i + 1) / 5;
+  ctx.beginPath();
+  for (var j = 0; j < dims.length; j++) {
+    var angle = (Math.PI * 2 * j / dims.length) - Math.PI / 2;
+    var x = cx + level * Math.cos(angle);
+    var y = cy + level * Math.sin(angle);
+    if (j === 0) ctx.moveTo(x, y);
+    else ctx.lineTo(x, y);
+  }
+  ctx.closePath();
+  ctx.strokeStyle = '#ddd';
+  ctx.stroke();
+}
+
+for (var j = 0; j < dims.length; j++) {
+  var angle = (Math.PI * 2 * j / dims.length) - Math.PI / 2;
+  ctx.beginPath();
+  ctx.moveTo(cx, cy);
+  ctx.lineTo(cx + r * Math.cos(angle), cy + r * Math.sin(angle));
+  ctx.strokeStyle = '#ddd';
+  ctx.stroke();
+
+  var lx = cx + (r + 25) * Math.cos(angle);
+  var ly = cy + (r + 25) * Math.sin(angle);
+  ctx.fillStyle = '#333';
+  ctx.font = '12px sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText(dims[j], lx, ly);
+}
+
+ctx.beginPath();
+for (var j = 0; j < dims.length; j++) {
+  var angle = (Math.PI * 2 * j / dims.length) - Math.PI / 2;
+  var val = before[j] / 100 * r;
+  var x = cx + val * Math.cos(angle);
+  var y = cy + val * Math.sin(angle);
+  if (j === 0) ctx.moveTo(x, y);
+  else ctx.lineTo(x, y);
+}
+ctx.closePath();
+ctx.strokeStyle = 'rgba(74, 158, 255, 0.8)';
+ctx.fillStyle = 'rgba(74, 158, 255, 0.15)';
+ctx.fill();
+ctx.stroke();
+
+ctx.beginPath();
+for (var j = 0; j < dims.length; j++) {
+  var angle = (Math.PI * 2 * j / dims.length) - Math.PI / 2;
+  var val = after[j] / 100 * r;
+  var x = cx + val * Math.cos(angle);
+  var y = cy + val * Math.sin(angle);
+  if (j === 0) ctx.moveTo(x, y);
+  else ctx.lineTo(x, y);
+}
+ctx.closePath();
+ctx.strokeStyle = 'rgba(46, 125, 50, 0.8)';
+ctx.fillStyle = 'rgba(46, 125, 50, 0.15)';
+ctx.fill();
+ctx.stroke();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+name: data-cleaner-pipeline
+version: "1.0"
+
+sources:
+  - name: main_data
+    type: csv
+    path: data/input.csv
+  - name: supplementary
+    type: json
+    path: data/supplementary.json
+  - name: db_source
+    type: database
+    database:
+      driver: postgres
+      host: localhost
+      port: 5432
+      user: postgres
+      password: ${DB_PASSWORD}
+      database: mydb
+      table: users
+  - name: api_source
+    type: api
+    api:
+      url: "https://api.example.com/data"
+      headers:
+        Authorization: "Bearer ${API_TOKEN}"
+      data_path: "results"
+      pagination:
+        mode: offset
+        offset_param: offset
+        limit_param: limit
+        page_size: 100
+        max_pages: 10
+
+quality:
+  weights:
+    completeness: 0.2
+    consistency: 0.15
+    accuracy: 0.2
+    uniqueness: 0.15
+    timeliness: 0.15
+    validity: 0.15
+  timeliness_threshold: "720h"
+  primary_key: ["id"]
+  range_checks:
+    - field: age
+      min: 0
+      max: 150
+    - field: longitude
+      min: -180
+      max: 180
+  consistency_rules:
+    - type: compare
+      field_a: start_date
+      field_b: end_date
+      expression: "<="
+  validity_rules:
+    - field: email
+      pattern: '^[\\w.]+@[\\w.]+\\.[\\w]+$'
+
+rules:
+  builtin:
+    - id: not_null_id
+      type: not_null
+      field: id
+      critical: true
+    - id: age_range
+      type: range
+      field: age
+      params:
+        min: 0
+        max: 150
+      critical: true
+    - id: email_format
+      type: regex
+      field: email
+      params:
+        pattern: '^[\\w.]+@[\\w.]+\\.[\\w]+$'
+      critical: false
+  cross_field:
+    - id: date_order
+      type: cross_field
+      field: start_date
+      params:
+        field_a: start_date
+        field_b: end_date
+        operator: "<="
+      critical: true
+  dsl:
+    - id: age_email_check
+      expression: "age >= 0 and age <= 150"
+      critical: true
+
+pipeline:
+  max_workers: 4
+  error_policy: continue
+  retry_count: 1
+  steps:
+    - name: assess
+      type: assess
+    - name: light_clean
+      type: clean
+      depends_on: [assess]
+      condition:
+        field: dqi
+        op: ">"
+        value: 80
+      params:
+        missing_strategy: median
+        outlier_strategy: winsorize
+    - name: deep_clean
+      type: clean
+      depends_on: [assess]
+      condition:
+        field: dqi
+        op: "<="
+        value: 80
+      params:
+        missing_strategy: knn
+        outlier_strategy: to_null
+    - name: validate
+      type: assess
+      depends_on: [light_clean, deep_clean]
+    - name: output
+      type: output
+      depends_on: [validate]
+
+output:
+  directory: ./output
+  format: csv
+  reports: true
+  audit_log: audit.jsonl
+  html: true
+
+cache:
+  directory: .data-cleaner-cache/
+  enabled: true

@@ -1,0 +1,222 @@
+[
+  {
+    "age": 28,
+    "department": null,
+    "email": "alice@example.com",
+    "end_date": "2024-06-30",
+    "id": 1,
+    "name": "Alice",
+    "phone": "13800138001",
+    "salary": 55000,
+    "start_date": "2023-01-15"
+  },
+  {
+    "age": 35,
+    "department": null,
+    "email": "bob@example.com",
+    "end_date": "2024-12-31",
+    "id": 2,
+    "name": "Bob",
+    "phone": "13900139002",
+    "salary": 62000,
+    "start_date": "2023-03-01"
+  },
+  {
+    "age": -5,
+    "department": null,
+    "email": "charlie@example.com",
+    "end_date": "2023-05-01",
+    "id": 3,
+    "name": "Charlie",
+    "phone": "13700137003",
+    "salary": 71000,
+    "start_date": "2023-06-15"
+  },
+  {
+    "age": 42,
+    "department": null,
+    "email": null,
+    "end_date": "2024-01-15",
+    "id": 4,
+    "name": "Diana",
+    "phone": "13600136004",
+    "salary": 58000,
+    "start_date": "2022-11-01"
+  },
+  {
+    "age": 29,
+    "department": null,
+    "email": "eve@example.com",
+    "end_date": "2024-08-30",
+    "id": 5,
+    "name": "Eve",
+    "phone": "13500135005",
+    "salary": null,
+    "start_date": "2023-02-28"
+  },
+  {
+    "age": 150,
+    "department": null,
+    "email": "frank@example",
+    "end_date": "2024-07-20",
+    "id": 6,
+    "name": "Frank",
+    "phone": "134-0013-4006",
+    "salary": 48000,
+    "start_date": "2023-04-10"
+  },
+  {
+    "age": 31,
+    "department": null,
+    "email": "grace@example.com",
+    "end_date": null,
+    "id": 7,
+    "name": "Grace",
+    "phone": "13300133007",
+    "salary": 53000,
+    "start_date": "2023-05-20"
+  },
+  {
+    "age": 27,
+    "department": null,
+    "email": "hank@example.com",
+    "end_date": "2024-09-15",
+    "id": 8,
+    "name": "Hank",
+    "phone": "13200132008",
+    "salary": 59000,
+    "start_date": "2023-07-01"
+  },
+  {
+    "age": 38,
+    "department": null,
+    "email": "ivy@example.com",
+    "end_date": "2024-03-01",
+    "id": 9,
+    "name": "Ivy",
+    "phone": "13100131009",
+    "salary": 67000,
+    "start_date": null
+  },
+  {
+    "age": 45,
+    "department": null,
+    "email": "jack@example.com",
+    "end_date": "2024-11-30",
+    "id": 10,
+    "name": "Jack",
+    "phone": "130-0013-0010",
+    "salary": 72000,
+    "start_date": "2023-08-15"
+  },
+  {
+    "age": 28,
+    "department": null,
+    "email": "alice@example.com",
+    "end_date": "2024-06-30",
+    "id": 11,
+    "name": "Alice",
+    "phone": "13800138001",
+    "salary": 55000,
+    "start_date": "2023-01-15"
+  },
+  {
+    "age": 33,
+    "department": null,
+    "email": "kate@example.com",
+    "end_date": "2024-10-15",
+    "id": 12,
+    "name": "Kate",
+    "phone": null,
+    "salary": 61000,
+    "start_date": "2023-09-01"
+  },
+  {
+    "age": 999,
+    "department": null,
+    "email": "liam@example.com",
+    "end_date": "2024-04-20",
+    "id": 13,
+    "name": "Liam",
+    "phone": "12800128013",
+    "salary": -5000,
+    "start_date": "2023-10-01"
+  },
+  {
+    "age": 26,
+    "department": null,
+    "email": "mia@example.com",
+    "end_date": "2024-05-30",
+    "id": 14,
+    "name": "Mia",
+    "phone": "12700127014",
+    "salary": 54000,
+    "start_date": "2023-11-15"
+  },
+  {
+    "age": 34,
+    "department": null,
+    "email": "noah@example.com",
+    "end_date": "2024-12-31",
+    "id": 15,
+    "name": "Noah",
+    "phone": "126 0012 6015",
+    "salary": 63000,
+    "start_date": "2023-12-01"
+  },
+  {
+    "age": 29,
+    "department": "Engineering",
+    "email": "olivia@example.com",
+    "end_date": null,
+    "id": 16,
+    "name": "Olivia",
+    "phone": null,
+    "salary": 57000,
+    "start_date": null
+  },
+  {
+    "age": -3,
+    "department": "Marketing",
+    "email": "peter@example",
+    "end_date": null,
+    "id": 17,
+    "name": "Peter",
+    "phone": null,
+    "salary": 49000,
+    "start_date": null
+  },
+  {
+    "age": 31,
+    "department": "Engineering",
+    "email": "quinn@example.com",
+    "end_date": null,
+    "id": 18,
+    "name": "Quinn",
+    "phone": null,
+    "salary": 64000,
+    "start_date": null
+  },
+  {
+    "age": 27,
+    "department": "Sales",
+    "email": "",
+    "end_date": null,
+    "id": 19,
+    "name": "Rachel",
+    "phone": null,
+    "salary": 52000,
+    "start_date": null
+  },
+  {
+    "age": 36,
+    "department": "Engineering",
+    "email": "sam@example.com",
+    "end_date": null,
+    "id": 20,
+    "name": "Sam",
+    "phone": null,
+    "salary": 68000,
+    "start_date": null
+  }
+]

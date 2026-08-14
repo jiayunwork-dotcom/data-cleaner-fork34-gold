@@ -1,0 +1,20 @@
+[
+  {
+    "rule_name": "dqi_threshold",
+    "task_name": "quality_check",
+    "state": "OK",
+    "consecutive_count": 0,
+    "last_value": 95.43,
+    "last_eval_time": "2026-06-03T15:23:59.891066+08:00",
+    "silenced_until": "0001-01-01T00:00:00Z"
+  },
+  {
+    "rule_name": "completeness_check",
+    "task_name": "quality_check",
+    "state": "OK",
+    "consecutive_count": 0,
+    "last_value": 95.83333333333334,
+    "last_eval_time": "2026-06-03T15:23:59.891236+08:00",
+    "silenced_until": "0001-01-01T00:00:00Z"
+  }
+]
