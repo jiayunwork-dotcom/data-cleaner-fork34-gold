@@ -594,7 +594,7 @@ func (c *Cleaner) StandardizeFormats(ds *datasource.Dataset) *datasource.Dataset
 				}
 			case FormatTrim:
 				if cell.Type == datasource.TypeString {
-					trimmed := strings.TrimLeft(cell.StrVal, " \t")
+					trimmed := strings.TrimSpace(cell.StrVal)
 					if trimmed != cell.StrVal {
 						newCell = datasource.CellValue{StrVal: trimmed, Raw: trimmed, Type: datasource.TypeString}
 						changed = true
